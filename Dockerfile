@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-cudnn7-devel
+FROM ubuntu:latest 
 LABEL maintainer="Todor Stoyanov"
 
 # 0 installing CUDA all the way
@@ -17,7 +17,7 @@ RUN pip3 install jupyter pandas matplotlib scipy seaborn scikit-learn scikit-Ima
 
 # 3. installing Tensorflow (GPU)
 # see here https://www.tensorflow.org/install/install_linux#InstallingNativePip
-RUN pip3 install tensorflow-gpu
+RUN pip3 install tensorflow
 
 # 4. installing OpenAI Gym (plus dependencies)
 RUN pip3 install gym pyopengl
