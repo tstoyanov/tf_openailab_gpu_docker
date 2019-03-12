@@ -19,8 +19,19 @@ RUN pip3 install jupyter pandas matplotlib scipy seaborn scikit-learn scikit-Ima
 # see here https://www.tensorflow.org/install/install_linux#InstallingNativePip
 RUN pip3 install tensorflow-gpu
 
-# 4. installing OpenAI Gym (plus dependencies)
-RUN pip3 install gym pyopengl
+# 4. Getting PoseCNN dependencies
+#4.1 Pangolin
+RUN apt-get update && apt-get install -y libeigen3-dev git cmake libglew-dev libboost-all-dev
+RUN git clone https://github.com/stevenlovegrove/Pangolin.git && \
+    mkdir Pangolin/build && \ 
+    cd Pangolin/build && \
+    cmake .. && \
+    make -j4 && \
+    make install
+#4.2 
+RUN git clone https://github.com/strasdat/Sophus.git && \
+    apt-get update && apt-get install -y gfortran libc++-dev libgoogle-glog-dev libatlas-base-dev libsuitesparse-dev ccache wget 
+    
 
 # 5. installing X and xvfb so we can SEE the action using a remote desktop access (VNC)
 # and because this is the last apt, let's clean up after ourselves
