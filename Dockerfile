@@ -19,10 +19,7 @@ RUN pip3 install jupyter pandas matplotlib scipy seaborn scikit-learn scikit-Ima
 # see here https://www.tensorflow.org/install/install_linux#InstallingNativePip
 RUN pip3 install tensorflow-gpu
 
-# 4. installing OpenAI Gym (plus dependencies)
-RUN pip3 install gym pyopengl
-
-# 5. installing X and xvfb so we can SEE the action using a remote desktop access (VNC)
+# 4. installing X and xvfb so we can SEE the action using a remote desktop access (VNC)
 # and because this is the last apt, let's clean up after ourselves
 RUN apt-get update && apt-get install -y vim python-opengl python3-opengl
 RUN apt-get install -y x11vnc xvfb fluxbox wmctrl && \
